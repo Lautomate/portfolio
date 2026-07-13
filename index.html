@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lau — Senior Data Analyst who builds analytics, automation, and business solutions. Problem-first, tool-agnostic.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="src/logo-icon.ico" type="image/x-icon">
+    <title>Lau — Data Analytics, Engineering & Business Solutions</title>
+    <script>
+        // Apply saved theme before paint to avoid a flash of the wrong theme.
+        (function () {
+            var saved = localStorage.getItem('theme');
+            var theme = saved || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+</head>
+<body>
+
+    <header class="top_nav">
+        <span class="logo">lau<span>tomate</span></span>
+
+        <nav class="nav_links" aria-label="Section navigation">
+            <a href="#section1" title="Introduction" aria-label="Introduction">
+                <svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5M5 10v9h14v-9M9.5 19v-5h5v5"/></svg>
+            </a>
+            <a href="#section2" title="About Me" aria-label="About Me">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c1-3.8 4-6 7-6s6 2.2 7 6"/></svg>
+            </a>
+            <a href="#section3" title="Journey" aria-label="Journey">
+                <svg viewBox="0 0 24 24"><circle cx="5" cy="18" r="2"/><circle cx="12" cy="7" r="2"/><circle cx="19" cy="18" r="2"/><path d="M6.6 16.6 10.6 8.6M13.4 8.6l3.9 8"/></svg>
+            </a>
+            <a href="#section4" title="How I Solve Problems" aria-label="How I Solve Problems">
+                <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h13"/></svg>
+            </a>
+            <a href="#section5" title="Projects" aria-label="Projects">
+                <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+            </a>
+        </nav>
+
+        <button class="theme_toggle" id="theme_toggle" aria-label="Toggle light and dark mode">
+            <svg class="moon_icon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+            <svg class="sun_icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+    </header>
+
+    <main>
+        <section class="section1" id="section1">
+            <div class="hero_profile">
+                <img src="src/profile.jpg" alt="Portrait of Lau">
+                <h1>Lau</h1>
+                <div class="meta">
+                    <p>lauual7132@gmail.com</p>
+                    <p>GenSan, Philippines</p>
+                </div>
+                <div class="socials">
+                    <a href="https://www.facebook.com/laurencejem.galenopilapil/" target="_blank" rel="noopener" aria-label="Facebook">
+                        <span class="icon_mask icon_facebook"></span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/laurence-jem-pilapil-374a35271" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <span class="icon_mask icon_linkedin"></span>
+                    </a>
+                    <a href="#" aria-label="Instagram (link coming soon)">
+                        <span class="icon_mask icon_instagram"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero_main">
+                <span class="eyebrow">Senior Data Analyst</span>
+                <h2 class="hero_headline">
+                    I turn business problems into
+                    <span class="hero_rotator">
+                        <ul class="leave_text">
+                            <li>data analysis.</li>
+                            <li>automation.</li>
+                            <li>working tools.</li>
+                            <li>clear insights.</li>
+                            <li>real solutions.</li>
+                        </ul>
+                    </span>
+                </h2>
+                <p class="hero_sub">
+                    I start with the problem, not the tool — then reach for whichever combination of analytics,
+                    automation, or software gets it solved. Currently building data solutions and internal
+                    tools that bridge technical teams and business stakeholders.
+                </p>
+                <div class="hero_stats">
+                    <div class="stat">
+                        <h2>2+</h2>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h2>10+</h2>
+                        <p>Projects Created</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section2" id="section2">
+            <span class="eyebrow">About Me</span>
+            <h2>Where <span>analytics</span>, automation, and software meet.</h2>
+            <p>
+                I started my career as a Data Analyst, using Excel, SQL, Power BI, and Python for reporting,
+                dashboards, and data analysis. As the business problems I was solving grew more complex, so did
+                my toolkit — I moved into data engineering, building ETL pipelines and automations to keep data
+                moving reliably between systems.
+            </p>
+            <p>
+                Today, my role also includes business solution development: building internal web applications
+                and workflow automations that dashboards alone can't solve. Across every phase, my approach has
+                stayed the same — understand the business problem first, then decide what to build.
+            </p>
+        </section>
+
+        <section class="section3" id="section3">
+            <div class="section_heading">
+                <span class="eyebrow">Journey</span>
+                <h2>Three phases, one thread</h2>
+            </div>
+            <div class="journey_grid">
+
+                <div class="wrap_career hidden">
+                    <div class="icon_wrap">
+                        <svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 19v-6M13 19V9M18 19v-4"/></svg>
+                    </div>
+                    <span class="phase_tag">Phase 1</span>
+                    <h3>Data Analytics</h3>
+                    <p>
+                        Where I began — reporting, dashboards, and process automation to help teams understand
+                        what was happening in the business and make faster decisions.
+                    </p>
+                    <div class="stack_row">
+                        <span class="pill">Excel</span>
+                        <span class="pill">SQL</span>
+                        <span class="pill">Power BI</span>
+                        <span class="pill">Python</span>
+                    </div>
+                </div>
+
+                <div class="wrap_career hidden">
+                    <div class="icon_wrap">
+                        <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.3"/><circle cx="18" cy="18" r="2.3"/><path d="M8 6h6a4 4 0 0 1 4 4v4"/></svg>
+                    </div>
+                    <span class="phase_tag">Phase 2</span>
+                    <h3>Data Engineering</h3>
+                    <p>
+                        As requirements grew more complex, my focus shifted from analyzing data to making sure it
+                        could be extracted, transformed, and delivered efficiently.
+                    </p>
+                    <div class="stack_row">
+                        <span class="pill">ETL</span>
+                        <span class="pill">SQL Optimization</span>
+                        <span class="pill">Data Pipelines</span>
+                        <span class="pill">Python Automation</span>
+                    </div>
+                </div>
+
+                <div class="wrap_career hidden">
+                    <div class="icon_wrap">
+                        <svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 8.5h17M7 6.3h.01"/></svg>
+                    </div>
+                    <span class="phase_tag">Phase 3</span>
+                    <h3>Business Solution Development</h3>
+                    <p>
+                        Dashboards and automation alone weren't always enough, so I expanded into building
+                        internal tools and web applications that solve business problems directly.
+                    </p>
+                    <div class="stack_row">
+                        <span class="pill">HTML/CSS/JS</span>
+                        <span class="pill">Flask</span>
+                        <span class="pill">N8N</span>
+                        <span class="pill">Git & GitHub</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section4" id="section4">
+            <div class="section_heading">
+                <span class="eyebrow">How I Solve Problems</span>
+                <h2>The problem comes first. The tool comes second.</h2>
+            </div>
+            <div class="problem_list">
+
+                <div class="problem_row hidden">
+                    <div>
+                        <span class="problem_num">01</span>
+                        <p class="problem_text">I need to understand what's happening in the business.</p>
+                    </div>
+                    <div class="tool_tags">
+                        <span class="pill">Excel</span>
+                        <span class="pill">SQL</span>
+                        <span class="pill">Power BI</span>
+                        <span class="pill">Python</span>
+                    </div>
+                </div>
+
+                <div class="problem_row hidden">
+                    <div>
+                        <span class="problem_num">02</span>
+                        <p class="problem_text">I need data moved, cleaned, or connected across systems.</p>
+                    </div>
+                    <div class="tool_tags">
+                        <span class="pill">SQL</span>
+                        <span class="pill">Python</span>
+                        <span class="pill">ETL Pipelines</span>
+                    </div>
+                </div>
+
+                <div class="problem_row hidden">
+                    <div>
+                        <span class="problem_num">03</span>
+                        <p class="problem_text">I need a repetitive manual process automated.</p>
+                    </div>
+                    <div class="tool_tags">
+                        <span class="pill">Python</span>
+                        <span class="pill">N8N</span>
+                        <span class="pill">Workflow Automation</span>
+                    </div>
+                </div>
+
+                <div class="problem_row hidden">
+                    <div>
+                        <span class="problem_num">04</span>
+                        <p class="problem_text">I need an internal tool people can actually use.</p>
+                    </div>
+                    <div class="tool_tags">
+                        <span class="pill">HTML</span>
+                        <span class="pill">CSS</span>
+                        <span class="pill">JavaScript</span>
+                        <span class="pill">Flask</span>
+                        <span class="pill">Git & GitHub</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section5" id="section5">
+            <div class="section_heading">
+                <span class="eyebrow">Major Projects</span>
+                <h2>Full-scale builds</h2>
+            </div>
+            <div class="projects_container">
+                <div class="wrap_project hidden">
+                    <div class="thumb">
+                        <img src="src/2026 - Project 1.png" alt="Leave Monitoring System screenshot">
+                    </div>
+                    <div class="card_body">
+                        <h3>Leave Monitoring</h3>
+                        <p>An Excel-based Leave Monitoring System designed to improve leave tracking and reporting.
+                           Earned multiple company awards for improving operational efficiency.</p>
+                        <button class="view_link" onclick="viewVid('2026project1')">
+                            View project
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="wrap_project hidden">
+                    <div class="thumb">
+                        <img src="src/project1.png" alt="YouTube Library project screenshot">
+                    </div>
+                    <div class="card_body">
+                        <h3>YouTube Library</h3>
+                        <p>An innovative Power BI project analyzing YouTube data from various channels.
+                           Utilizing essential Python libraries for web scraping without relying on an API.</p>
+                        <button class="view_link" onclick="viewVid('yl')">
+                            View project
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section5" id="section6">
+            <div class="section_heading">
+                <span class="eyebrow">Minor Projects</span>
+                <h2>Smaller explorations</h2>
+            </div>
+            <div class="projects_container">
+                <div class="wrap_project hidden">
+                    <div class="thumb"><img src="src/project7.png" alt="Project Fire screenshot"></div>
+                    <div class="card_body">
+                        <h3>Project Fire</h3>
+                        <p>When hobby and profession meet.</p>
+                        <button class="view_link" onclick="viewVid('pf')">
+                            View project
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="wrap_project hidden">
+                    <div class="thumb"><img src="src/project5.png" alt="Call Center project screenshot"></div>
+                    <div class="card_body">
+                        <h3>Call Center</h3>
+                        <p>Improving call center analysis through Power BI visualization. A clear and efficient
+                           way to track performance, identify trends, and optimize operations.</p>
+                        <button class="view_link" onclick="viewVid('cc')">
+                            View project
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="wrap_project hidden">
+                    <div class="thumb"><img src="src/project4.png" alt="Android vs iPhone project screenshot"></div>
+                    <div class="card_body">
+                        <h3>Android vs iPhone</h3>
+                        <p>An Excel project with a little bit of storytelling.</p>
+                        <button class="view_link" onclick="viewVid('ai')">
+                            View project
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="wrap_project hidden">
+                    <div class="thumb"><img src="src/project3.png" alt="Beer Months project screenshot"></div>
+                    <div class="card_body">
+                        <h3>Beer Months</h3>
+                        <p>A Power BI focused project that leverages the platform's data visualization and
+                           analysis capabilities to speed up insights.</p>
+                        <button class="view_link" onclick="viewVid('bm')">
+                            View project
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site_footer">
+        <p>&copy; 2026 Lau. Built from scratch — HTML, CSS &amp; JavaScript.</p>
+        <div class="socials">
+            <a href="https://www.facebook.com/laurencejem.galenopilapil/" target="_blank" rel="noopener" aria-label="Facebook">
+                <span class="icon_mask icon_facebook" style="width:16px;height:16px;"></span>
+            </a>
+            <a href="https://www.linkedin.com/in/laurence-jem-pilapil-374a35271" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <span class="icon_mask icon_linkedin" style="width:16px;height:16px;"></span>
+            </a>
+            <a href="#" aria-label="Instagram (link coming soon)">
+                <span class="icon_mask icon_instagram" style="width:16px;height:16px;"></span>
+            </a>
+        </div>
+    </footer>
+
+    <script src="scripts/script.js" defer></script>
+</body>
+</html>
