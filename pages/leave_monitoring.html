@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leave Monitoring — an Excel-based HR tool by Lau.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/project.css">
+    <link rel="icon" href="../src/logo-icon.ico" type="image/x-icon">
+    <title>Leave Monitoring — Lau</title>
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            document.documentElement.setAttribute('data-theme', saved || 'dark');
+        })();
+    </script>
+</head>
+<body>
+
+    <header class="project_nav">
+        <a class="back_link" href="../index.html">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            Back to portfolio
+        </a>
+        <button class="theme_toggle" id="theme_toggle" aria-label="Toggle light and dark mode">
+            <svg class="moon_icon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+            <svg class="sun_icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+    </header>
+
+    <main class="project_wrapper">
+        <div class="project_media">
+            <iframe src="https://drive.google.com/file/d/1U0sWJc1n81E8Qqv8J7_NlsiLXrWloX9B/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+
+        <div class="project_content">
+            <h1>Leave Monitoring</h1>
+
+            <div class="grouping">
+                <span class="group_title">Project Overview</span>
+                <p class="description">
+                    A shared Excel-based Leave Monitoring System that replaces individual, disconnected leave-tracking files used by HR employees.
+                    It automates employee data entry, leave-day computation, and payroll-ready reporting, allowing HR to process leave requests and payroll cut-offs faster and with far fewer errors.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Business Problem</span>
+                <p class="description">
+                    Each HR employee maintained a separate Excel file for leave tracking, which caused duplicate entries and inconsistent records.
+                    Computing actual leave days was also manual and error-prone, since HR had to individually exclude weekends and holidays for each employee based on their location.
+                    On top of that, preparing leave data for payroll cut-offs required manually cross-checking records against pay periods.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Solution</span>
+                <p class="description">
+                    I built a centralized, shared Excel workbook where HR employees select an employee's name from a dropdown and their personal information auto-populates.
+                    Leave type and charge codes are also selected from dropdowns to reduce input errors, while a built-in calculation automatically excludes weekends and holidays
+                    when computing leave days. A password-protected data sheet ensures only supervisors can edit submitted records, while other HR employees can still view them.
+                    A dedicated Payroll worksheet uses Power Query to pull and transform leave data based on a selected pay period, giving HR a ready-to-use summary of leave days
+                    and pay status with a single click of a Refresh button. The system also includes a dashboard and leave-pattern views so HR and management can monitor trends
+                    without manual reporting.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Key Features</span>
+                <ul class="feature_list">
+                    <li>Dropdown-based data validation for Type of Leave and Charged To</li>
+                    <li>Auto-populated employee details based on Full Name selection</li>
+                    <li>Centralized, shared data entry accessible to all HR employees</li>
+                    <li>Automatic exclusion of weekends and holidays in leave-day computation</li>
+                    <li>One-click, Power Query-driven payroll summary filtered by pay period</li>
+                    <li>Password-protected records, editable only by supervisors</li>
+                    <li>Dashboard with leave participation, tenure, and department insights</li>
+                    <li>Automatic flagging of leave as "With Pay" or "No Pay" per entry</li>
+                    <li>Employee-level and company-wide leave pattern tracking (day-of-week, monthly trends)</li>
+                </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Technologies Used</span>
+                <ul class="tech_list">
+                    <li>Excel Formulas</li>
+                    <li>Power Query</li>
+                    <li>VBA (form submission automation)</li>
+                    <li>Data Validation</li>
+                    <li>Password Protection</li>
+                    <li>OneDrive (shared file access)</li>
+                </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Challenges or Learnings</span>
+                <p class="description">
+                    Since the file was shared on OneDrive with more than 5 HR employees accessing and editing it simultaneously, it sometimes caused merge conflicts.
+                    This pushed me to think more carefully about how shared Excel files behave under concurrent use, and how to structure access
+                    (like password-protecting the data sheet) to reduce conflicts and protect data integrity.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Outcome or Impact</span>
+                <p class="description">
+                    Before this system, it took 5 HR employees to manually encode around 100 leave entries per payroll cut-off, with computation errors often reported to managers.
+                    Now, a single HR employee can encode 100 leave entries in one day without issues, and payroll-ready leave summaries are generated instantly via the
+                    Payroll worksheet instead of manual cross-checking. HR meetings have shifted from resolving errors to simply giving upper management status updates.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/script.js" defer></script>
+</body>
+</html>

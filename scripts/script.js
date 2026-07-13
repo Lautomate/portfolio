@@ -33,7 +33,7 @@ document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 // ============================================
 function viewVid(args) {
     const routes = {
-        'project1': 'pages/ytlibrary.html'
+        'project1': 'pages/leave_monitoring.html'
     };
     if (routes[args]) {
         location.href = routes[args];
