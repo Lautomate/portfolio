@@ -38,6 +38,26 @@
     color: var(--accent);
 }
 
+.data_badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    box-shadow: var(--shadow);
+}
+
+.data_badge strong {
+    color: var(--accent);
+}
+
 .project_wrapper {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -59,7 +79,7 @@
     background: var(--surface);
 }
 
-.project_media iframe {
+.project_media iframe    {
     width: 100%;
     height: 100%;
     border: 0;
