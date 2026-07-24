@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Leave Monitoring — an Excel-based HR tool by Lau.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/project.css">
+    <link rel="icon" href="../src/logo-icon.ico" type="image/x-icon">
+    <title>Personal Relevance Digest — Lautomate</title>
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            document.documentElement.setAttribute('data-theme', saved || 'dark');
+        })();
+    </script>
+</head>
+<body>
+
+    <header class="project_nav">
+        <a class="back_link" href="../index.html">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            Back to portfolio
+        </a>
+        <button class="theme_toggle" id="theme_toggle" aria-label="Toggle light and dark mode">
+            <svg class="moon_icon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+            <svg class="sun_icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+    </header>
+
+    <main class="project_wrapper">
+        <div class="project_media">
+            <span class="data_badge"><strong>Note:</strong> Sample data — real workflow</span>
+            <iframe src="https://drive.google.com/file/d/1U0sWJc1n81E8Qqv8J7_NlsiLXrWloX9B/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+
+        <div class="project_content">
+            <h1>Personal Relevance Digest</h1>
+
+            <div class="grouping">
+                <span class="group_title">Project Overview</span>
+                <p class="description">
+                A self-hosted n8n workflow that combines three personally relevant data sources such as GenSan rain forecasts, nationwide 
+                earthquake activity, and Philippine national news, into a single AI-generated digest email, sent only when something 
+                new has actually happened. The project combines API integration, web scraping, database-backed deduplication, and 
+                AI synthesis into one production pipeline.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Business Problem</span>
+                <p class="description">
+                Staying informed about daily risks and news in the Philippines means checking multiple disconnected sources like 
+                a weather service, an earthquake bulletin, a news site, none of which are personalized or consolidated. 
+                Manually checking each one is easy to forget, and most of what's on each site on any given day isn't actually new, making it 
+                hard to tell what's worth attention versus what's already been seen.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Solution</span>
+                <p class="description">
+                I built a scheduled n8n workflow with three independent branches, Weather (Open-Meteo API), Earthquakes 
+                (PHIVOLCS bulletin, scraped), and News (ABS-CBN, parsed from the site's embedded page data), each filtering to 
+                what's relevant and checking a Postgres database to determine what's genuinely new since the last run. The three 
+                branches merge into a single gate: if nothing new was found, the workflow ends silently; if something was found, 
+                the combined data is handed to Google Gemini, which writes a single readable HTML digest sent via Gmail. 
+                The workflow runs three times daily.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Key Features</span>
+                <ul class="feature_list">
+                <li>Three independent, parallel data branches merged into one pipeline</li>
+                <li>Postgres-backed deduplication (Neon) so the same earthquake or article never triggers a repeat alert</li>
+                <li>"Only email if something's new" gate or no noise on quiet days</li>
+                <li>AI-synthesized digest (Gemini) that writes one coherent summary across all three sources, rather than three separate lists</li>
+                <li>Direct extraction of a site's embedded JSON data for the JavaScript-rendered news source, bypassing traditional CSS-selector scraping</li>
+                <li>Fully HTML-formatted email output with clickable headlines and summaries</li>
+                <li>Time-zone-correct "is this today" logic, handled differently per source depending on the timestamp format each one provides</li>
+                </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Technologies Used</span>
+                <ul class="tech_list">
+                <li>n8n (self-hosted on Hostinger)</li> 
+                <li>Open-Meteo API</li>
+                <li>ScrapingBee (for JavaScript-protected scraping)</li>
+                <li>Neon (serverless Postgres)</li>
+                <li>Google Gemini API (3.5 Flash-Lite)</li>
+                <li>Gmail API</li>
+                <li>JavaScript (Code nodes) and Luxon for timezone handling</li>
+                </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Challenges or Learnings</span>
+                <p class="description">
+                Two of my three originally planned data sources sat behind bot protection that wasn't worth the cost or fragility to 
+                fight, so I made the call to swap both for sources that were either a clean public API or a plain 
+                HTTP-accessible page without changing the pipeline's overall architecture.
+                </p>
+                <p class="description">
+                I also ran into an n8n behavior that isn't obvious until you hit it: a node that returns zero output items causes 
+                n8n to skip every node downstream of it, which is a serious problem when "zero results" (no rain today, no new earthquakes) 
+                is the normal, expected outcome rather than an edge case. I had to explicitly handle this in three separate places 
+                in the pipeline, learning to distinguish "always output a placeholder so the chain keeps moving" from "filter that 
+                placeholder back out before it reaches something that shouldn't see it," since carelessly letting a placeholder reach 
+                a database insert step caused a separate downstream error.
+                </p>
+                <p class="description">
+                Timezones were a recurring theme, one source had no true machine-readable date, requiring a string-matching 
+                workaround, while another needed explicit UTC conversion. The same "is this today" question needed a different 
+                technical answer for each source. I also hit deprecated-model errors twice from Gemini's lineup changing mid-build, 
+                a reminder that AI model availability isn't a "set once" decision the way a REST API endpoint usually is.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Outcome or Impact</span>
+                <p class="description">
+                The workflow runs three times daily, fully unattended, correctly detecting new rain risk, new earthquakes, and 
+                new headlines while staying silent on days with nothing to report. What started with a single planned data source 
+                became a working case study in adapting scope around real-world constraints such as anti-bot protection, API deprecations, 
+                and a finite testing budget.
+                </p>
+                <p class="description">
+                Beyond the technical build, the digest has become part of my daily routine: knowing rain probability in advance 
+                helps me decide whether to cover my motorcycle and plan my day around it, the earthquake updates keep me aware of 
+                activity across the country, and having curated headlines and summary land in my inbox makes me more likely to actually read the 
+                news instead of skipping it.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/script.js" defer></script>
+</body>
+</html>

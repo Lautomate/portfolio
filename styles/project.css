@@ -109,6 +109,7 @@
     color: var(--text-muted);
     font-size: 16px;
     line-height: 1.7;
+    margin-bottom: var(--space-1);
 }
 
 .grouping ul.feature_list,
