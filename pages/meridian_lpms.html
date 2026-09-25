@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meridian LPMS — a full-stack Flask leave and payroll system by Lau.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/project.css">
+    <link rel="icon" href="../src/logo-icon.ico" type="image/x-icon">
+    <title>Meridian LPMS — Lautomate</title>
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            document.documentElement.setAttribute('data-theme', saved || 'dark');
+        })();
+    </script>
+</head>
+<body>
+
+    <header class="project_nav">
+        <a class="back_link" href="../index.html">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            Back to portfolio
+        </a>
+        <button class="theme_toggle" id="theme_toggle" aria-label="Toggle light and dark mode">
+            <svg class="moon_icon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+            <svg class="sun_icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+    </header>
+
+    <main class="project_wrapper">
+        <div class="project_media_wrap">
+            <div class="project_media">
+                <span class="data_badge"><strong>Note:</strong> Sample data — real workflow</span>
+
+                <div class="media_stage">
+                    <div class="media_item active" data-type="video">
+                        <iframe src="https://drive.google.com/file/d/1d2xIGlFwwejgyX4OSObnwMfC8XvClUPT/preview" allow="autoplay" allowfullscreen></iframe>
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/meridian-lpms/dashboard.png" alt="Meridian LPMS dashboard screenshot">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/meridian-lpms/leaveform.png" alt="Meridian LPMS leave form screenshot">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/meridian-lpms/project3.png" alt="Meridian LPMS overview screenshot">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/meridian-lpms/organization.png" alt="Meridian LPMS organization balances screenshot">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/meridian-lpms/employees.png" alt="Meridian LPMS organization balances screenshot">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/meridian-lpms/payroll.png" alt="Meridian LPMS payroll screenshot">
+                    </div>
+                </div>
+            </div>
+
+            <div class="media_tabs">
+                <button class="media_tab active" data-index="0">Video</button>
+                <button class="media_tab" data-index="1">Dashboard</button>
+                <button class="media_tab" data-index="2">Leave Form</button>
+                <button class="media_tab" data-index="3">Records</button>
+                <button class="media_tab" data-index="4">Organization</button>
+                <button class="media_tab" data-index="5">Employees</button>
+                <button class="media_tab" data-index="6">Payroll</button>
+            </div>
+        </div>
+
+        <div class="project_content">
+            <h1>Meridian LPMS</h1>
+
+            <div class="grouping">
+                <span class="group_title">Project Overview</span>
+                <p class="description">
+                    Meridian LPMS is a full-stack web application that replaces the legacy Excel-based Leave Monitoring
+                    Tool used by the HR team. It handles leave filing, records management, organization-wide
+                    balance tracking, payroll computation, holiday management, and employee data sync — rebuilding
+                    years of accumulated Excel logic into a proper Flask and SQL Server application, then hardening
+                    it for real deployment.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Business Problem</span>
+                <p class="description">
+                    HR's entire leave-tracking system lived in a single shared Excel workbook, edited simultaneously
+                    by multiple HR staff, which regularly led to overwritten changes and lost data. Payroll computation relied
+                    on a dense web of interdependent Excel formulas that were nearly impossible to audit, and at least
+                    one had been silently wrong for an unknown period, quietly miscalculating leave balances for real
+                    employees. There was also no validation layer to stop invalid data entry, and no safe way to add
+                    a forgotten holiday without risking retroactive changes to payroll that had already been paid out.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Solution</span>
+                <p class="description">
+                    I rebuilt the system as a Flask web app backed by SQL Server, first reproducing Excel's exact
+                    calculation logic (leave entitlement brackets, the overflow between leave types, holiday-aware
+                    workday counting), then improving on what Excel couldn't structurally support: role-based access
+                    control, server-side validation, a single source of truth for data, and a "Finalize/Un-finalize
+                    Period" safeguard that protects already-paid payroll from being silently altered when a holiday
+                    is added late.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Key Features</span>
+                <ul class="feature_list">
+                    <li>Leave Form and Records management with full client- and server-side validation (date ranges, balance checks, valid leave type combinations, duplicate detection)</li>
+                    <li>Organization-wide and per-employee balance dashboards, computed dynamically so they're always accurate against the latest data</li>
+                    <li>A payroll engine that reproduces Excel's exact days-granted, running balance, and pay status logic, including leaves that cross a payroll period</li>
+                    <li>Dynamic holidays: adding, editing, or deleting one automatically recalculates every affected leave record, with the Finalize/Un-finalize safeguard protecting periods already paid out</li>
+                    <li>Employee sync from the HR master list, and Excel export on every major page</li>
+                    <li>Production hardening: login rate limiting, branded error pages, and a real WSGI server for genuine multi-user access</li>
+                </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Technologies Used</span>
+                <ul class="tech_list">
+                    <li>Python</li>
+                    <li>Flask</li>
+                    <li>SQL Server (pyodbc)</li>
+                    <li>JavaScript/HTML/CSS</li>
+                    <li>pandas/openpyxl</li>
+                    <li>Flask-Limiter</li>
+                    <li>Waitress</li>
+                    <li>Git</li>
+                </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Challenges or Learnings</span>
+                <p class="description">
+                    The most educational moment came after I thought the app was finished. It worked fine in local
+                    development, but the Payroll page took over 20 seconds to load once I pointed it at a real cloud
+                    database instead of a same-machine one. The app was making 339 separate database round trips per
+                    page load, invisible locally but brutal once real network latency entered the picture. It was a
+                    clear lesson that "works fine on my machine" can hide real architectural debt that only shows up
+                    in a production-like environment. Fixing it meant batching those 339 queries down to 4, about a
+                    15x speedup, with the numbers verified byte-for-byte against the old output before shipping.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Outcome or Impact</span>
+                <p class="description">
+                    The Excel merge-conflict problem is gone, replaced by one authoritative database instead of a
+                    fragile shared file. The app is now accessible 24/7, and payroll periods populate automatically
+                    instead of requiring HR to call me to set up the current period manually. Pages load fast across
+                    the board, unlike before, when every action triggered a full Excel recalculation and forced HR to
+                    wait seconds just to continue working. Human error is now minimal, since every entry is validated
+                    and secured. The underlying business rules and logic have also been hardened, closing the gaps
+                    that let silent errors slip through in the old system.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/script.js" defer></script>
+</body>
+</html>

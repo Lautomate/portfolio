@@ -1,0 +1,137 @@
+<!--
+    TEMPLATE — not a live page, do not link to this from index.html.
+
+    Starting point for a new Category B (AI Automation) project page.
+    Copy this file, rename it (e.g. pages/my_new_project.html), fill in
+    the content, then:
+      1. Add a route for it in scripts/script.js's viewVid() routes object.
+      2. Add a card for it in index.html (optionally with a
+         <span class="category_pill">AI Automation</span> above the <h3>,
+         matching the markup shown further below).
+
+    Content structure (Category B, per portfolio-context.md section 9):
+      Business Problem -> Current Manual Process -> Automation Design ->
+      Tools -> AI's Role -> Human's Role -> Result -> Limitation
+
+    Media example below shows the "one Power BI/Drive embed + screenshots"
+    case: first item is the live/active embed, the rest are screenshots.
+    If this project only has ONE media item total, delete the
+    .project_media_wrap/.media_stage/.media_tabs wrapper entirely and use
+    the plain <div class="project_media"><iframe>...</iframe></div> pattern
+    from pages/leave_monitoring.html instead — do not add gallery markup
+    for a single item.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="[Project Name] — an AI Automation project by Lau.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/project.css">
+    <link rel="icon" href="../src/logo-icon.ico" type="image/x-icon">
+    <title>[Project Name] — Lautomate</title>
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            document.documentElement.setAttribute('data-theme', saved || 'dark');
+        })();
+    </script>
+</head>
+<body>
+
+    <header class="project_nav">
+        <a class="back_link" href="../index.html">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            Back to portfolio
+        </a>
+        <button class="theme_toggle" id="theme_toggle" aria-label="Toggle light and dark mode">
+            <svg class="moon_icon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+            <svg class="sun_icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+    </header>
+
+    <main class="project_wrapper">
+        <!-- Multi-item media example: one embed + two screenshots.
+             Tabs live outside .project_media (inside .project_media_wrap)
+             so they don't overlap iframe controls (fullscreen, quality, etc.)
+             or crop into the image/video area. -->
+        <div class="project_media_wrap">
+            <div class="project_media">
+                <span class="data_badge"><strong>Note:</strong> Real data — real workflow</span>
+
+                <div class="media_stage">
+                    <div class="media_item active" data-type="report">
+                        <iframe src="[PowerBI or Drive embed URL]" allow="autoplay" allowfullscreen></iframe>
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/placeholder.png" alt="[Screenshot 1 description]">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/placeholder.png" alt="[Screenshot 2 description]">
+                    </div>
+                </div>
+            </div>
+
+            <div class="media_tabs">
+                <button class="media_tab active" data-index="0">Report</button>
+                <button class="media_tab" data-index="1">Screenshot 1</button>
+                <button class="media_tab" data-index="2">Screenshot 2</button>
+            </div>
+        </div>
+
+        <div class="project_content">
+            <h1>[Project Name]</h1>
+
+            <div class="grouping">
+                <span class="group_title">Business Problem</span>
+                <p class="description">[What was the underlying business problem?]</p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Current Manual Process</span>
+                <p class="description">[What did the process look like before automation?]</p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Automation Design</span>
+                <p class="description">[How is the automation structured end to end?]</p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Tools</span>
+                <ul class="tech_list">
+                    <li>[Tool 1]</li>
+                    <li>[Tool 2]</li>
+                </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">AI's Role</span>
+                <p class="description">[Where specifically does AI contribute — be concrete about what it does.]</p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Human's Role</span>
+                <p class="description">[What stays under human control/review?]</p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Result</span>
+                <p class="description">[What changed as a result?]</p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Limitation</span>
+                <p class="description">[Where does the system still fall short?]</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/script.js" defer></script>
+</body>
+</html>

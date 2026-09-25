@@ -85,6 +85,89 @@
     border: 0;
 }
 
+/* ============================================
+   Multi-item project media (gallery)
+   Only present on pages with more than one media
+   item — single-item pages keep the plain
+   .project_media > iframe/img markup above untouched.
+   ============================================ */
+
+.media_stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.media_item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.media_item.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.media_item iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.media_item img {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: contain;
+    display: block;
+    background: var(--surface);
+}
+
+.project_media_wrap {
+    position: sticky;
+    top: 100px;
+}
+
+.project_media_wrap .project_media {
+    position: static;
+}
+
+.media_tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: var(--space-2);
+}
+
+.media_tab {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    box-shadow: var(--shadow);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.media_tab.active,
+.media_tab:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+}
+
+@media screen and (max-width: 900px) {
+    .project_media_wrap {
+        position: static;
+    }
+}
+
 .project_content h1 {
     font-size: clamp(28px, 4vw, 40px);
     font-weight: 700;
