@@ -35,7 +35,8 @@ function viewVid(args) {
     const routes = {
         'project1': 'pages/leave_monitoring.html',
         'project2': 'pages/personal_relevance_digest.html',
-        'project3': 'pages/meridian_lpms.html'
+        'project3': 'pages/meridian_lpms.html',
+        'project4': 'pages/lead_intake_triage.html'
     };
     if (routes[args]) {
         location.href = routes[args];

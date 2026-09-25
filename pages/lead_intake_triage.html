@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lead Intake Triage — an AI-assisted email triage workflow by Lau.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/project.css">
+    <link rel="icon" href="../src/logo-icon.ico" type="image/x-icon">
+    <title>Lead Intake Triage — Lautomate</title>
+    <script>
+        (function () {
+            var saved = localStorage.getItem('theme');
+            document.documentElement.setAttribute('data-theme', saved || 'dark');
+        })();
+    </script>
+</head>
+<body>
+
+    <header class="project_nav">
+        <a class="back_link" href="../index.html">
+            <svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            Back to portfolio
+        </a>
+        <button class="theme_toggle" id="theme_toggle" aria-label="Toggle light and dark mode">
+            <svg class="moon_icon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+            <svg class="sun_icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+    </header>
+
+    <main class="project_wrapper">
+        <div class="project_media_wrap">
+            <div class="project_media">
+                <span class="data_badge"><strong>Note:</strong> Real data — real workflow</span>
+
+                <div class="media_stage">
+                    <div class="media_item active" data-type="video">
+                        <iframe src="https://drive.google.com/file/d/17OAkkfsWpOSNjgBek8ijo6F5n09isPPM/preview" allow="autoplay" allowfullscreen></iframe>
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/lead_intake_triage/review_case_n8n.png" alt="n8n workflow view of a review case being processed">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/lead_intake_triage/review_case_docker.png" alt="Docker logs for a review case running through the workflow">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/lead_intake_triage/review_case_notif.png" alt="Review notification email sent for a flagged case">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/lead_intake_triage/spam_n8n.png" alt="n8n workflow view of a spam email being logged">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/lead_intake_triage/spam_docker.png" alt="Docker logs for a spam email being logged">
+                    </div>
+                </div>
+            </div>
+
+            <div class="media_tabs">
+                <button class="media_tab active" data-index="0">Video</button>
+                <button class="media_tab" data-index="1">Review (n8n)</button>
+                <button class="media_tab" data-index="2">Review (Docker)</button>
+                <button class="media_tab" data-index="3">Review Notification</button>
+                <button class="media_tab" data-index="4">Spam (n8n)</button>
+                <button class="media_tab" data-index="5">Spam (Docker)</button>
+            </div>
+        </div>
+
+        <div class="project_content">
+            <h1>Lead Intake Triage</h1>
+
+            <div class="grouping">
+                <span class="group_title">Business Problem</span>
+                <p class="description">
+                    Small businesses that get inbound leads by email end up losing time reading, sorting, and routing
+                    every message by hand. Worse, that manual process makes it easy to miss an urgent lead, a pricing
+                    question, or an existing client's follow-up buried in a busy inbox.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Current Manual Process</span>
+                <p class="description">
+                    Every email had to be opened, read in full, and judged by hand: is this a real lead, a pricing
+                    question, a support issue, spam, or something unclear? Details like sender info, budget, and
+                    intent got copied somewhere by hand too, whether that was a spreadsheet, a notebook, or just
+                    memory. The more emails came in, the longer this took, and there was no consistent record of
+                    what came in or how it got handled.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Automation Design</span>
+                <p class="description">
+                    I built an n8n workflow that watches a Gmail inbox for new unread messages. Each email is
+                    stripped down to its essential fields and sent to Gemini with a structured extraction prompt,
+                    which returns sender info, a plain-English summary, one of six fixed categories, extracted
+                    budget, urgency, and a self-reported confidence score. A validation layer checks that output
+                    against a few independent rules before anything gets trusted, and every processed email is
+                    logged to Postgres regardless of outcome. From there, a Switch node routes things three ways:
+                    confidently categorized leads get a clean summary sent to the business owner, anything ambiguous
+                    or low-confidence triggers a separate review email with the raw original text and the reason it
+                    got flagged, and spam is just logged quietly with no notification at all.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Tools</span>
+                <ul class="tech_list">
+                    <li>n8n (self-hosted via Docker)</li>
+                    <li>Google Gemini (gemini-3.1-flash-lite)</li>
+                    <li>Gmail</li>
+                    <li>PostgreSQL (self-hosted via Docker)</li>
+                </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">AI's Role</span>
+                <p class="description">
+                    The LLM handles the part of this task that's genuinely unstructured: reading free-form language
+                    and figuring out what the sender actually wants, then pulling out details like budget and
+                    urgency that may or may not be stated outright. It's also instructed to say "Unclear" rather
+                    than force a guess when something doesn't cleanly fit a category.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Human's Role</span>
+                <p class="description">
+                    A person still makes the final call on anything the system can't confidently classify, and still
+                    acts on flagged leads by replying, quoting a price, or scheduling a call. The system cuts down
+                    triage time and surfaces what needs attention. It doesn't take the human out of the decision.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Result</span>
+                <p class="description">
+                    Across 8 stress-test emails, automated processing averaged 3.36 seconds per email, ranging from
+                    about 2 to 4.5 seconds, while manual triage was self-timed at roughly 15 to 20 seconds for short
+                    emails and 30 to 60 seconds for longer ones, averaging around 19 seconds per email for the same
+                    batch. That works out to roughly a 5 to 6x speed improvement. The real bottleneck in manual
+                    triage was never reading the email, it was the classification and extraction judgment call,
+                    which is exactly the part this pipeline now handles.
+                </p>
+                <p class="description">
+                    Across all 11 emails tested during development, including edge cases, manual review confirmed
+                    the AI's classification was correct every time, with zero confidently mislabeled emails. Every
+                    ambiguous, low-confidence, or unverifiable case was correctly escalated to human review instead
+                    of being forced into a category.
+                </p>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Limitation</span>
+                <ul class="feature_list">
+                    <li>Uses a polling-based trigger that checks the inbox every minute rather than a real-time push webhook, which would matter more at higher email volume.</li>
+                    <li>Categories are fixed at six. A genuinely new type of inquiry outside those six will likely land in "Unclear" rather than being handled well. That's by design, but it means the category list needs periodic review as real usage patterns show up.</li>
+                    <li>Budget and urgency extraction depend entirely on the sender actually stating them. The system is told not to invent unstated figures, so vague inquiries often come back as "not mentioned" or "not stated," which is correct behavior but limits how much can be automated for those leads.</li>
+                    <li>The system can't verify a sender's claim of prior history or an existing relationship. That risk is reduced, not eliminated, by forcing every Support/Follow-up classification into human review regardless of confidence, since it references history the system has no way to check.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/script.js" defer></script>
+</body>
+</html>
