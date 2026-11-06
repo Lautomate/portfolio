@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Leave Monitoring — an Excel-based HR tool by Lau.">
+    <meta name="description" content="Personal Relevance Digest, an n8n workflow that sends an AI-written daily digest. By Lau.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/project.css">
     <link rel="icon" href="../src/logo-icon.ico" type="image/x-icon">
-    <title>Personal Relevance Digest — Lautomate</title>
+    <title>Personal Relevance Digest | Lautomate</title>
     <script>
         (function () {
             var saved = localStorage.getItem('theme');
@@ -34,7 +34,7 @@
 
     <main class="project_wrapper">
         <div class="project_media">
-            <span class="data_badge"><strong>Note:</strong> Real data — real workflow</span>
+            <span class="data_badge">Real data, real workflow</span>
             <iframe src="https://drive.google.com/file/d/1l5D78yY6mIoxz2U_h9qMrrjyzDSDAULu/preview" allow="autoplay" allowfullscreen></iframe>
         </div>
 
@@ -107,7 +107,7 @@
                 HTTP-accessible page without changing the pipeline's overall architecture.
                 </p>
                 <p class="description">
-                I also ran into an n8n behavior that isn't obvious until you hit it: a node that returns zero output items causes 
+                I also ran into an n8n behavior that isn't obvious until you hit it. A node that returns zero output items causes 
                 n8n to skip every node downstream of it, which is a serious problem when "zero results" (no rain today, no new earthquakes) 
                 is the normal, expected outcome rather than an edge case. I had to explicitly handle this in three separate places 
                 in the pipeline, learning to distinguish "always output a placeholder so the chain keeps moving" from "filter that 
@@ -131,7 +131,7 @@
                 and a finite testing budget.
                 </p>
                 <p class="description">
-                Beyond the technical build, the digest has become part of my daily routine: knowing rain probability in advance 
+                Beyond the technical build, the digest has become part of my daily routine. Knowing rain probability in advance 
                 helps me decide whether to cover my motorcycle and plan my day around it, the earthquake updates keep me aware of 
                 activity across the country, and having curated headlines and summary land in my inbox makes me more likely to actually read the 
                 news instead of skipping it.
