@@ -59,14 +59,11 @@
                     <p>GenSan, Philippines</p>
                 </div>
                 <div class="socials">
-                    <a href="https://www.facebook.com/laurencejem.galenopilapil/" target="_blank" rel="noopener" aria-label="Facebook">
-                        <span class="icon_mask icon_facebook"></span>
+                    <a href="https://github.com/Lautomate" target="_blank" rel="noopener" aria-label="GitHub">
+                        <span class="icon_mask icon_github"></span>
                     </a>
                     <a href="https://www.linkedin.com/in/laurence-jem-pilapil-374a35271" target="_blank" rel="noopener" aria-label="LinkedIn">
                         <span class="icon_mask icon_linkedin"></span>
-                    </a>
-                    <a href="#" aria-label="Instagram (link coming soon)">
-                        <span class="icon_mask icon_instagram"></span>
                     </a>
                 </div>
             </div>
@@ -87,12 +84,13 @@
                 </h2>
                 <p class="hero_sub">
                     I start with the problem, not the tool — then reach for whichever combination of analytics,
-                    automation, or software gets it solved. Currently building data solutions and internal
-                    tools that bridge technical teams and business stakeholders.
+                    automation, or software gets it solved. As a Senior Data Analyst, I built data pipelines,
+                    internal tools, and workflow automations that bridged technical teams and business
+                    stakeholders. Now I'm building personal projects in workflow and AI automation.
                 </p>
                 <div class="hero_stats">
                     <div class="stat">
-                        <h2>2+</h2>
+                        <h2>3</h2>
                         <p>Years Experience</p>
                     </div>
                     <div class="stat">
@@ -246,73 +244,11 @@
 
         <section class="section5" id="section5">
             <div class="section_heading">
-                <span class="eyebrow">Major Projects</span>
-                <h2>Full-scale builds</h2>
+                <span class="eyebrow">Projects</span>
+                <h2>Things I've built</h2>
             </div>
             <div class="projects_container">
-                <div class="wrap_project hidden">
-                    <div class="thumb">
-                        <img src="src/projects/meridian_lpms/project3.png" alt="Meridian LPMS screenshot">
-                    </div>
-                    <div class="card_body">
-                        <h3>Meridian LPMS</h3>
-                        <p>A full-stack Flask and SQL Server rebuild of an Excel-based Leave Monitoring Tool,
-                            replacing a fragile shared workbook with automated payroll and role-based access control.</p>
-                        <button class="view_link" onclick="viewVid('project3')">
-                            View project
-                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="wrap_project hidden">
-                    <div class="thumb"><img src="src/placeholder.png" alt="Coming Soon!"></div>
-                    <div class="card_body">
-                        <h3>Coming Soon!</h3>
-                        <p>Coming Soon!</p>
-                        <button class="view_link" onclick="viewVid('pf')">
-                            View project
-                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section5" id="section6">
-            <div class="section_heading">
-                <span class="eyebrow">Minor Projects</span>
-                <h2>Smaller explorations</h2>
-            </div>
-            <div class="projects_container">
-                <div class="wrap_project hidden">
-                    <div class="thumb">
-                        <img src="src/projects/leave_monitoring/project1.png" alt="Leave Monitoring System screenshot">
-                    </div>
-                    <div class="card_body">
-                        <h3>Leave Monitoring</h3>
-                        <p>An Excel-based Leave Monitoring System designed to improve leave tracking and reporting.
-                           Earned multiple company awards for improving operational efficiency.</p>
-                        <button class="view_link" onclick="viewVid('project1')">
-                            View project
-                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="wrap_project hidden">
-                    <div class="thumb">
-                        <img src="src/projects/personal_relevance_digest/project2.png" alt="Coming soon!">
-                    </div>
-                    <div class="card_body">
-                        <h3>Personal Relevance Digest</h3>
-                        <p>A self-hosted n8n workflow that combines weather, earthquake, and news data into a
-                            single AI-generated daily digest.</p>
-                        <button class="view_link" onclick="viewVid('project2')">
-                            View project
-                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="wrap_project hidden">
+                <div class="wrap_project hidden" data-category="ai-automation">
                     <div class="thumb">
                         <img src="src/projects/lead_intake_triage/project4.png" alt="Lead Intake Triage screenshot">
                     </div>
@@ -327,6 +263,51 @@
                         </button>
                     </div>
                 </div>
+                <div class="wrap_project hidden" data-category="web-app">
+                    <div class="thumb">
+                        <img src="src/projects/meridian_lpms/project3.png" alt="Meridian LPMS screenshot">
+                    </div>
+                    <div class="card_body">
+                        <span class="category_pill">Web App</span>
+                        <h3>Meridian LPMS</h3>
+                        <p>A full-stack Flask and SQL Server rebuild of an Excel-based Leave Monitoring Tool,
+                            replacing a fragile shared workbook with automated payroll and role-based access control.</p>
+                        <button class="view_link" onclick="viewVid('project3')">
+                            View project
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="wrap_project hidden" data-category="ai-automation">
+                    <div class="thumb">
+                        <img src="src/projects/personal_relevance_digest/project2.png" alt="Personal Relevance Digest screenshot">
+                    </div>
+                    <div class="card_body">
+                        <span class="category_pill">AI Automation</span>
+                        <h3>Personal Relevance Digest</h3>
+                        <p>A self-hosted n8n workflow that combines weather, earthquake, and news data into a
+                            single AI-generated daily digest.</p>
+                        <button class="view_link" onclick="viewVid('project2')">
+                            View project
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="wrap_project hidden" data-category="excel-tool">
+                    <div class="thumb">
+                        <img src="src/projects/leave_monitoring/project1.png" alt="Leave Monitoring System screenshot">
+                    </div>
+                    <div class="card_body">
+                        <span class="category_pill">Excel Tool</span>
+                        <h3>Leave Monitoring</h3>
+                        <p>An Excel-based Leave Monitoring System designed to improve leave tracking and reporting.
+                           Earned multiple company awards for improving operational efficiency.</p>
+                        <button class="view_link" onclick="viewVid('project1')">
+                            View project
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -334,14 +315,11 @@
     <footer class="site_footer">
         <p>&copy; 2026 Laurence Jem Pilapil. All rights reserved.</p>
         <div class="socials">
-            <a href="https://www.facebook.com/laurencejem.galenopilapil/" target="_blank" rel="noopener" aria-label="Facebook">
-                <span class="icon_mask icon_facebook" style="width:16px;height:16px;"></span>
+            <a href="https://github.com/Lautomate" target="_blank" rel="noopener" aria-label="GitHub">
+                <span class="icon_mask icon_github" style="width:16px;height:16px;"></span>
             </a>
             <a href="https://www.linkedin.com/in/laurence-jem-pilapil-374a35271" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <span class="icon_mask icon_linkedin" style="width:16px;height:16px;"></span>
-            </a>
-            <a href="#" aria-label="Instagram (link coming soon)">
-                <span class="icon_mask icon_instagram" style="width:16px;height:16px;"></span>
             </a>
         </div>
     </footer>

@@ -284,9 +284,8 @@ button {
     mask-position: center;
 }
 
-.icon_facebook { -webkit-mask-image: url('../src/facebook.svg'); mask-image: url('../src/facebook.svg'); }
+.icon_github { -webkit-mask-image: url('../src/github.svg'); mask-image: url('../src/github.svg'); }
 .icon_linkedin { -webkit-mask-image: url('../src/linkedin.svg'); mask-image: url('../src/linkedin.svg'); }
-.icon_instagram { -webkit-mask-image: url('../src/instagram.svg'); mask-image: url('../src/instagram.svg'); }
 
 .hero_profile .socials a:hover {
     color: var(--accent);
