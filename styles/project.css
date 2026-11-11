@@ -238,6 +238,42 @@
     color: var(--text-muted);
 }
 
+/* Outline button for an external link inside a grouping (same look as the card's .view_link) */
+.grouping .repo_link {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    background: transparent;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.grouping .repo_link:hover,
+.grouping .repo_link:focus-visible {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.grouping .repo_link svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    transition: transform 0.2s ease;
+}
+
+.grouping .repo_link:hover svg {
+    transform: translateX(3px);
+}
+
 @media screen and (max-width: 900px) {
     .project_wrapper {
         grid-template-columns: 1fr;

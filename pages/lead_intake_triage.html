@@ -35,37 +35,45 @@
     <main class="project_wrapper">
         <div class="project_media_wrap">
             <div class="project_media">
-                <span class="data_badge">Real data, real workflow</span>
+                <span class="data_badge">Sample data, real workflow</span>
 
                 <div class="media_stage">
                     <div class="media_item active" data-type="video">
-                        <iframe src="https://drive.google.com/file/d/17OAkkfsWpOSNjgBek8ijo6F5n09isPPM/preview" allow="autoplay" allowfullscreen></iframe>
+                        <iframe src="https://drive.google.com/file/d/1eDoHzUw2ZcnTE9v1w-iH0aC8e_xEwiZu/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
                     <div class="media_item" data-type="screenshot">
-                        <img src="../src/projects/lead_intake_triage/review_case_n8n.png" alt="n8n workflow view of a review case being processed">
+                        <img src="../src/projects/lead_intake_triage/01-workflow.png" alt="The main Lead Intake Triage workflow in n8n, from Gmail Trigger to the alert emails">
                     </div>
                     <div class="media_item" data-type="screenshot">
-                        <img src="../src/projects/lead_intake_triage/review_case_docker.png" alt="Docker logs for a review case running through the workflow">
+                        <img src="../src/projects/lead_intake_triage/02-urgent-alert.png" alt="Red urgent alert email for a support request with a deadline in 2 days">
                     </div>
                     <div class="media_item" data-type="screenshot">
-                        <img src="../src/projects/lead_intake_triage/review_case_notif.png" alt="Review notification email sent for a flagged case">
+                        <img src="../src/projects/lead_intake_triage/03-review-digest.png" alt="Grey review digest email listing flagged emails and why each was flagged">
                     </div>
                     <div class="media_item" data-type="screenshot">
-                        <img src="../src/projects/lead_intake_triage/spam_n8n.png" alt="n8n workflow view of a spam email being logged">
+                        <img src="../src/projects/lead_intake_triage/04-weekly-report.png" alt="Green weekly report email with counts per category and the Unclear emails">
                     </div>
                     <div class="media_item" data-type="screenshot">
-                        <img src="../src/projects/lead_intake_triage/spam_docker.png" alt="Docker logs for a spam email being logged">
+                        <img src="../src/projects/lead_intake_triage/05-database.png" alt="The leads table in PostgreSQL with category, urgency and review status per email">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/lead_intake_triage/06-digest-workflow.png" alt="The Lead Review Digest workflow in n8n">
+                    </div>
+                    <div class="media_item" data-type="screenshot">
+                        <img src="../src/projects/lead_intake_triage/07-weekly-report-workflow.png" alt="The Lead Weekly Report workflow in n8n">
                     </div>
                 </div>
             </div>
 
             <div class="media_tabs">
                 <button class="media_tab active" data-index="0">Video</button>
-                <button class="media_tab" data-index="1">Review (n8n)</button>
-                <button class="media_tab" data-index="2">Review (Docker)</button>
-                <button class="media_tab" data-index="3">Review Notification</button>
-                <button class="media_tab" data-index="4">Spam (n8n)</button>
-                <button class="media_tab" data-index="5">Spam (Docker)</button>
+                <button class="media_tab" data-index="1">Main Workflow</button>
+                <button class="media_tab" data-index="2">Urgent Alert</button>
+                <button class="media_tab" data-index="3">Review Digest</button>
+                <button class="media_tab" data-index="4">Weekly Report</button>
+                <button class="media_tab" data-index="5">Database</button>
+                <button class="media_tab" data-index="6">Digest Workflow</button>
+                <button class="media_tab" data-index="7">Report Workflow</button>
             </div>
         </div>
 
@@ -75,93 +83,111 @@
             <div class="grouping">
                 <span class="group_title">Business Problem</span>
                 <p class="description">
-                    Small businesses that get inbound leads by email end up losing time reading, sorting, and routing
-                    every message by hand. Worse, that manual process makes it easy to miss an urgent lead, a pricing
-                    question, or an existing client's follow-up buried in a busy inbox.
+                    A small business inbox mixes new leads with support requests, pricing questions, cold pitches
+                    and spam. Someone has to open every email, decide what it is, and pick out the budget and the
+                    deadline by hand. It's slow, nothing gets recorded, and the one urgent email of the day can sit
+                    unread under the rest.
                 </p>
             </div>
 
             <div class="grouping">
-                <span class="group_title">Current Manual Process</span>
+                <span class="group_title">What It Does</span>
                 <p class="description">
-                    Every email had to be opened, read in full, and judged by hand. Was it a real lead, a pricing
-                    question, a support issue, spam, or something unclear? Details like sender info, budget, and
-                    intent got copied somewhere by hand too, whether that was a spreadsheet, a notebook, or just
-                    memory. The more emails came in, the longer this took, and there was no consistent record of
-                    what came in or how it got handled.
+                    It watches a business Gmail inbox, classifies every new email with Gemini, checks Gemini's
+                    answer with code, saves every email to PostgreSQL, and alerts a human only when needed. Each
+                    email gets one of six categories (Automation Inquiry, Reporting/Data Inquiry, Pricing Question,
+                    Support/Follow-up, Spam/Irrelevant, Unclear) and takes one of four routes.
                 </p>
+                <ul class="feature_list">
+                    <li>Clear lead: a blue "New lead" email with the summary, budget, deadline and a one-click link to the original.</li>
+                    <li>Flagged and urgent: a red "Urgent" email right away, with the reasons.</li>
+                    <li>Flagged, not urgent: waits for the twice-daily review digest.</li>
+                    <li>Obvious spam: saved and labelled, no email.</li>
+                </ul>
             </div>
 
             <div class="grouping">
                 <span class="group_title">Automation Design</span>
-                <p class="description">
-                    I built an n8n workflow that watches a Gmail inbox for new unread messages. Each email is
-                    stripped down to its essential fields and sent to Gemini with a structured extraction prompt,
-                    which returns sender info, a plain-English summary, one of six fixed categories, extracted
-                    budget, urgency, and a self-reported confidence score. A validation layer checks that output
-                    against a few independent rules before anything gets trusted, and every processed email is
-                    logged to Postgres regardless of outcome. From there, a Switch node routes things three ways:
-                    confidently categorized leads get a clean summary sent to the business owner, anything ambiguous
-                    or low-confidence triggers a separate review email with the raw original text and the reason it
-                    got flagged, and spam is just logged quietly with no notification at all.
-                </p>
+                <p class="description">Four n8n workflows share one PostgreSQL table.</p>
+                <ul class="feature_list">
+                    <li>Lead Intake Triage, every minute: reads, classifies, validates, saves, routes and alerts.</li>
+                    <li>Lead Review Digest, 8:00 and 20:00 Manila time: one email listing the flagged, non-urgent emails.</li>
+                    <li>Lead Weekly Report, Mondays 8:30: counts per category plus the list of Unclear emails, which shows when a new category is needed.</li>
+                    <li>Error Alert, on failure: emails the owner when any workflow fails.</li>
+                </ul>
             </div>
 
             <div class="grouping">
-                <span class="group_title">Tools</span>
-                <ul class="tech_list">
-                    <li>n8n (self-hosted via Docker)</li>
-                    <li>Google Gemini (gemini-3.1-flash-lite)</li>
-                    <li>Gmail</li>
-                    <li>PostgreSQL (self-hosted via Docker)</li>
+                <span class="group_title">How It Decides</span>
+                <ul class="feature_list">
+                    <li>Gemini extracts the deadline as a date, and code decides urgency: 14 days or less is high, "no rush" is low. LLMs read dates well but count days badly.</li>
+                    <li>7 guardrails send an email to human review: invalid category, Unclear, missing or invalid fields, low model confidence, Support/Follow-up (claimed history can't be verified), suspected prompt injection, and a spam cross-check where code-based spam signals disagree with Gemini.</li>
+                    <li>Email content is treated as untrusted data in the prompt, and HTML-escaped in every alert.</li>
+                    <li>Dedup has two layers: a Gmail "Triaged" label, plus a unique key on the Gmail message ID in PostgreSQL.</li>
+                    <li>Emails go to Gemini one at a time with a 4.5 s pause, under the free tier's 15 calls per minute. Each call gets 3 retries 5 s apart. If Gemini still fails, the email goes to review instead of being lost.</li>
+                    <li>Runs are capped at 10 minutes, and any failure triggers the Error Alert.</li>
                 </ul>
             </div>
 
             <div class="grouping">
                 <span class="group_title">AI's Role</span>
                 <p class="description">
-                    The LLM handles the part of this task that's genuinely unstructured. It reads free-form language
-                    and figures out what the sender actually wants, then pulls out details like budget and
-                    urgency that may or may not be stated outright. It's also instructed to say "Unclear" rather
-                    than force a guess when something doesn't cleanly fit a category.
+                    Gemini handles the part that is really language: what the sender wants, a one-line summary,
+                    the budget, the deadline, how confident it is, and whether the email is trying to give it
+                    instructions. It runs at temperature 0. It doesn't decide urgency, and it doesn't get the last
+                    word. Code checks every answer before anything is routed.
                 </p>
             </div>
 
             <div class="grouping">
                 <span class="group_title">Human's Role</span>
                 <p class="description">
-                    A person still makes the final call on anything the system can't confidently classify, and still
-                    acts on flagged leads by replying, quoting a price, or scheduling a call. The system cuts down
-                    triage time and surfaces what needs attention. It doesn't take the human out of the decision.
+                    A person sees urgent problems right away and everything else that was flagged twice a day,
+                    in one digest. They still make every reply, quote and judgment call. The system decides what
+                    needs their attention and when, not what to say.
                 </p>
             </div>
 
             <div class="grouping">
                 <span class="group_title">Result</span>
-                <p class="description">
-                    Across 8 stress-test emails, automated processing averaged 3.36 seconds per email, ranging from
-                    about 2 to 4.5 seconds, while manual triage was self-timed at roughly 15 to 20 seconds for short
-                    emails and 30 to 60 seconds for longer ones, averaging around 19 seconds per email for the same
-                    batch. That works out to roughly a 5 to 6x speed improvement. The real bottleneck in manual
-                    triage was never reading the email, it was the classification and extraction judgment call,
-                    which is exactly the part this pipeline now handles.
-                </p>
-                <p class="description">
-                    Across all 11 emails tested during development, including edge cases, manual review confirmed
-                    the AI's classification was correct every time, with zero confidently mislabeled emails. Every
-                    ambiguous, low-confidence, or unverifiable case was correctly escalated to human review instead
-                    of being forced into a category.
-                </p>
+                <ul class="feature_list">
+                    <li>94% correct category on a labelled test set of 49 emails, and 98% when the emails hit by Gemini outages are excluded.</li>
+                    <li>6 of 6 prompt-injection emails caught.</li>
+                    <li>11 end-to-end scenario tests run through real Gmail (lead, urgent client, spam, injection, duplicate and more): 10 of 11 took the expected route. The miss: a real lead written like spam was sent as urgent instead of to the digest. A rule fix is planned.</li>
+                </ul>
             </div>
 
             <div class="grouping">
                 <span class="group_title">Limitation</span>
                 <ul class="feature_list">
-                    <li>Uses a polling-based trigger that checks the inbox every minute rather than a real-time push webhook, which would matter more at higher email volume.</li>
-                    <li>Categories are fixed at six. A genuinely new type of inquiry outside those six will likely land in "Unclear" rather than being handled well. That's by design, but it means the category list needs periodic review as real usage patterns show up.</li>
-                    <li>Budget and urgency extraction depend entirely on the sender actually stating them. The system is told not to invent unstated figures, so vague inquiries often come back as "not mentioned" or "not stated," which is correct behavior but limits how much can be automated for those leads.</li>
-                    <li>The system can't verify a sender's claim of prior history or an existing relationship. That risk is reduced, not eliminated, by forcing every Support/Follow-up classification into human review regardless of confidence, since it references history the system has no way to check.</li>
+                    <li>Emails that arrive while the workflow is off, or in a run that times out, are not picked up later. A recovery sweep is planned.</li>
+                    <li>Free-tier Gemini allows 15 calls per minute with no speed guarantee. Calls took from 1 s to over 2 minutes in testing. Production would use the paid tier.</li>
+                    <li>More than 10 emails in a single minute is untested.</li>
+                    <li>The test set is 49 emails, all synthetic.</li>
+                    <li>The Gmail app is in Google's Testing mode, so the login expires every 7 days.</li>
                 </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Tools</span>
+                <ul class="tech_list">
+                    <li>n8n 2.45 (self-hosted, Docker)</li>
+                    <li>PostgreSQL 17</li>
+                    <li>Google Gemini (gemini-3.1-flash-lite, temperature 0)</li>
+                    <li>Gmail API</li>
+                    <li>JavaScript (n8n Code nodes)</li>
+                </ul>
+            </div>
+
+            <div class="grouping">
+                <span class="group_title">Source Code</span>
+                <p class="description">
+                    The four workflows, the database schema, the 49-email test set and the scenario tests are on GitHub.
+                </p>
+                <a class="repo_link" href="https://github.com/Lautomate/lead-intake-triage" target="_blank" rel="noopener">
+                    View on GitHub
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
             </div>
         </div>
     </main>
